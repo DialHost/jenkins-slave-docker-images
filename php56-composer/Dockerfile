@@ -7,7 +7,7 @@ RUN apt-get -y update && \
         openjdk-7-jdk
   
 RUN echo "root:password" | chpasswd  && \
-    useradd jenkins && \
+    useradd jenkins --home /home/jenkins && \
     echo "jenkins:jenkins" | chpasswd
   
 RUN mkdir -p /var/run/sshd && \

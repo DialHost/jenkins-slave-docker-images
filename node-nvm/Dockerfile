@@ -11,7 +11,7 @@ RUN apt-get -y update && \
         curl
 
 RUN echo "root:password" | chpasswd  && \
-    useradd jenkins && \
+    useradd jenkins --home /home/jenkins && \
     echo "jenkins:jenkins" | chpasswd
   
 RUN mkdir -p /var/run/sshd && \
