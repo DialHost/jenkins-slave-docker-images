@@ -8,7 +8,7 @@ RUN apt-get -y update && \
 
 RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
-        ext-mbstring
+    && docker-php-ext-install -j$(nproc) mcrypt mbstring tokenizer
 
 RUN echo "root:password" | chpasswd  && \
     useradd jenkins -m && \
