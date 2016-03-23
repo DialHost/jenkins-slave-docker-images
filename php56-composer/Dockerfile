@@ -4,7 +4,8 @@ MAINTAINER Pedro Maia "pedromaia@dialhost.com.br"
 
 RUN apt-get -y update && \
     apt-get -y install openssh-server \
-        openjdk-7-jdk
+        openjdk-7-jdk \
+        git
 
 RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
