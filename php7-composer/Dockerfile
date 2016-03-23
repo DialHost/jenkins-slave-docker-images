@@ -8,7 +8,7 @@ RUN apt-get -y update && \
 
 RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
-        ext-mbstring \
+        ext-mbstring
 
 RUN echo "root:password" | chpasswd  && \
     useradd jenkins -m && \
