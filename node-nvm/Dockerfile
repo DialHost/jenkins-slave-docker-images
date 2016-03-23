@@ -24,3 +24,5 @@ RUN rm -rf /var/lib/apt/lists/*
 ENV HOME /root
 ENV NODE_VER v5.9.0
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+
+CMD ["/usr/sbin/sshd", "-D"]
