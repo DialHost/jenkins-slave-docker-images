@@ -7,7 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update && \
     apt-get -y install openssh-server \
         openjdk-7-jdk \
-        git \
+        git
 
 RUN echo "root:password" | chpasswd  && \
     useradd jenkins -m && \
