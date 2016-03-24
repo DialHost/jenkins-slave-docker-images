@@ -4,6 +4,9 @@ MAINTAINER Pedro Maia "pedromaia@dialhost.com.br"
 
 RUN DEBIAN_FRONTEND=noninteractive
 
+RUN rm /bin/sh && \
+    ln -s /bin/bash /bin/sh
+
 RUN apt-get -y update && \
     apt-get -y install openssh-server \
         openjdk-7-jdk \
