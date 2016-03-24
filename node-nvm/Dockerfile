@@ -17,7 +17,9 @@ RUN echo "root:password" | chpasswd  && \
 RUN mkdir -p /var/run/sshd && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.11.1/install.sh | bash
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.11.1/install.sh | bash && \
+    source ~/.profile && \
+    nvm install v5.9.0
 
 RUN rm -rf /var/lib/apt/lists/*
   
