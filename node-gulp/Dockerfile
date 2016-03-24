@@ -25,7 +25,10 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.11.1/install.sh | b
     source /root/.profile && \
     nvm install v5.9.0
 
-RUN -shell=/bin/bash npm install -g gulp
+COPY ./source-nvm.sh /
+ENTRYPOINT ["/source-nvm.sh"]
+
+RUN npm install -g gulp
 
 RUN rm -rf /var/lib/apt/lists/*
   
