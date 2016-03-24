@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:15.04
 
 MAINTAINER Pedro Maia "pedromaia@dialhost.com.br"
 
