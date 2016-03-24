@@ -11,7 +11,8 @@ RUN apt-get -y update && \
     apt-get -y install openssh-server \
         openjdk-7-jdk \
         git \
-        curl
+        curl \
+        man
 
 RUN echo "root:password" | chpasswd  && \
     useradd jenkins -m && \
