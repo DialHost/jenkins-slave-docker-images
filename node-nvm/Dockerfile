@@ -20,7 +20,8 @@ RUN echo "root:password" | chpasswd  && \
 RUN mkdir -p /var/run/sshd && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 
-RUN git clone git@github.com:creationix/nvm.git /opt/nvm && \
+
+RUN git clone https://github.com/creationix/nvm.git /opt/nvm && \
     mkdir /usr/local/nvm && \
     mkdir /usr/local/node
 
