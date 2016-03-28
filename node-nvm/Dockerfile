@@ -20,12 +20,14 @@ RUN echo "root:password" | chpasswd  && \
 RUN mkdir -p /var/run/sshd && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 
+COPY ./nvm.sh /etc/profile.d/
 
 RUN git clone https://github.com/creationix/nvm.git /opt/nvm && \
     mkdir /usr/local/nvm && \
-    mkdir /usr/local/node
-
-COPY ./nvm.sh /etc/profile.d/
+    mkdir /usr/local/node && \
+    ./etc/profile.d/nvm.sh && \
+    echo "source /opt/nvm/nvm.sh" >> /root/.profile && \
+    echo "source /opt/nvm/nvm.sh" >> /home/jenkins/.profile
 
 RUN rm -rf /var/lib/apt/lists/*
   
