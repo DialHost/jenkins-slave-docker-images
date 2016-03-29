@@ -9,7 +9,7 @@ RUN apt-get -y update && \
         openjdk-7-jdk \
         git
 
-RUN echo "root:password" | chpasswd  && \
+RUN echo "root:password" | chpasswd && \
     useradd jenkins -m && \
     echo "jenkins:jenkins" | chpasswd
   

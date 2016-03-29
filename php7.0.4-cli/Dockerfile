@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
         libmcrypt-dev zlib1g-dev \
     && docker-php-ext-install -j$(nproc) mcrypt mbstring tokenizer zip
 
-RUN echo "root:password" | chpasswd  && \
+RUN echo "root:password" | chpasswd && \
     useradd jenkins -m && \
     echo "jenkins:jenkins" | chpasswd
   
