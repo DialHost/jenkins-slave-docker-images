@@ -9,9 +9,10 @@ RUN apt-get -y update && \
         openjdk-7-jdk \
         git
 
-RUN echo "root:password" | chpasswd  && \
+RUN echo "root:password" | chpasswd && \
     useradd jenkins -m && \
-    echo "jenkins:jenkins" | chpasswd
+    echo "jenkins:jenkins" | chpasswd && \
+    echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /home/jenkins/.ssh/config
   
 RUN mkdir -p /var/run/sshd && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
