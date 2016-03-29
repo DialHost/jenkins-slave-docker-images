@@ -11,9 +11,7 @@ RUN apt-get -y update && \
 
 RUN echo "root:password" | chpasswd && \
     useradd jenkins -m && \
-    echo "jenkins:jenkins" | chpasswd && \
-    echo -e "Host github.com\n\tStrictHostKeyChecking no" >> /home/jenkins/.ssh/config && \
-    chown jenkins. /home/jenkins/.ssh/config
+    echo "jenkins:jenkins" | chpasswd
   
 RUN mkdir -p /var/run/sshd && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
