@@ -27,6 +27,6 @@ RUN rm -rf /var/lib/apt/lists/*
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
 RUN wget https://github.com/clue/phar-composer/releases/download/v1.0.0/phar-composer.phar && \
-    mv phar-composer /usr/local/bin/composer
+    mv phar-composer.phar /usr/local/bin/composer
 
 CMD ["/usr/sbin/sshd", "-D"]
