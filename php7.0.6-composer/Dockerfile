@@ -1,16 +1,15 @@
-FROM php:7.0.4-cli
+FROM php:7.0.6-cli
 
 MAINTAINER Pedro Maia "pedromaia@dialhost.com.br"
 
 RUN apt-get -y update && \
     apt-get -y install openssh-server \
         openjdk-7-jdk \
-        git \
-        wget
+        git
 
 RUN apt-get update && apt-get install -y \
         libmcrypt-dev zlib1g-dev \
-    && docker-php-ext-install -j$(nproc) mcrypt mbstring tokenizer zip
+    && docker-php-ext-install -j$(nproc) mcrypt mbstring tokenizer zip mcrypt zip
 
 RUN echo "root:password" | chpasswd && \
     useradd jenkins -m && \
@@ -18,16 +17,15 @@ RUN echo "root:password" | chpasswd && \
 
 RUN mkdir -p /home/jenkins/.ssh && \
     chown -R jenkins:jenkins /home/jenkins/.ssh
-
+  
 RUN mkdir -p /var/run/sshd && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd
 
 RUN rm -rf /var/lib/apt/lists/*
-
+  
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
-RUN wget https://github.com/clue/phar-composer/releases/download/v1.0.0/phar-composer.phar && \
-    mv phar-composer.phar /usr/local/bin/composer-phar && \
-    chmod +x /usr/local/bin/composer-phar
+RUN curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
 
 CMD ["/usr/sbin/sshd", "-D"]
