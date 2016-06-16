@@ -9,7 +9,7 @@ RUN apt-get -y update && \
 
 RUN apt-get update && apt-get install -y \
         libmcrypt-dev zlib1g-dev && \
-    docker-php-ext-install -j$(nproc) pcntl  mcrypt mbstring tokenizer zip && \
+    docker-php-ext-install -j$(nproc) pcntl mcrypt mbstring tokenizer zip && \
     docker-php-ext-enable mcrypt zip
 
 RUN echo "root:password" | chpasswd && \
